@@ -3,8 +3,11 @@ package com.junia.tailorshop.people;
 
 import com.junia.tailorshop.interfaces.WelcomeService;
 import com.junia.tailorshop.interfaces.ManagementTasks;
+import static com.junia.tailorshop.utils.Utils.nameCheck;
+import static com.junia.tailorshop.utils.Utils.numberCheck;
 import static com.junia.tailorshop.utils.Utils.print;
 import static com.junia.tailorshop.utils.Utils.println;
+
  import java.util.Scanner;
 
 public class SeniorTailor extends Person implements WelcomeService, ManagementTasks {
@@ -22,14 +25,12 @@ public class SeniorTailor extends Person implements WelcomeService, ManagementTa
             println("Welcome! Senior Tailor "+ getName() +" is here to assist you.");
 
             print("Please enter your name: ");
-            String name = scanner.nextLine();
-            customer.setName(name);
+            nameInputCheck(customer,scanner);
 
-            print("Please enter your contact information: ");
-            String contactInfo = scanner.nextLine();
-            customer.setContactInfo(contactInfo);
+            talk("Please enter your telephone number (format : 06xxxxxxxx ou 07xxxxxxxx) :");
+            numberInputCheck(customer, scanner);
 
-            println("Thank you, " + name + "! Let's proceed with your order.");
+            println("Thank you, " + customer.getName() + "! Let's proceed with your order.");
         } else {
             println("Welcome back, valued customer! Senior Tailor is here to assist you.");
             customer.showInfo();
@@ -50,4 +51,15 @@ public class SeniorTailor extends Person implements WelcomeService, ManagementTa
     public void showRole() {
         println("I am the Senior Tailor "+ getName()+".");
     }
-}
+
+    @Override
+    public void numberInputCheck(Customer customer, Scanner scanner) {
+        numberCheck(customer, scanner);
+    }
+
+    @Override
+    public void nameInputCheck(Customer customer, Scanner scanner) {
+        nameCheck(customer, scanner);
+    
+    
+}}

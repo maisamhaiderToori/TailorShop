@@ -10,8 +10,13 @@ import com.junia.tailorshop.models.Color;
 import com.junia.tailorshop.models.Item;
 import com.junia.tailorshop.models.Material;
 import com.junia.tailorshop.models.Size;
+import static com.junia.tailorshop.utils.Utils.clothesCheck;
+import static com.junia.tailorshop.utils.Utils.colorsCheck;
+import static com.junia.tailorshop.utils.Utils.materialCheck;
 import static com.junia.tailorshop.utils.Utils.print;
 import static com.junia.tailorshop.utils.Utils.println;
+import static com.junia.tailorshop.utils.Utils.sizeCheck;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -47,7 +52,7 @@ public class Customer extends Person{
     }
 
     public void showInfo() {
-        println("Name: " + getName());
+       println("Name: " + getName());
         println("Contact: " + contactInfo);
     }
 
@@ -56,20 +61,22 @@ public class Customer extends Person{
 
         if (status.equals("NEW")) {
            
+            //TODO
+            talk("Please choose the item you want to sew: Coat, Pants, or Both");
+            itemOrdered = clothesCheck(scanner);
+                   
+            talk("Choose size: S, M, L, XL, XXL, XXXL");
+            size = sizeCheck(scanner); // SizeEnum choice
 
-            println("Please choose the item you want to sew: Coat, Pants, or Both");
-            itemOrdered = ItemEnum.valueOf(scanner.nextLine().toUpperCase()); // ItemEnum choice
+            talk("Choose material: SILK, WOOL, COTTON, LINEN, SATIN");
+            material = materialCheck(scanner); // MaterialEnum choice
 
-            println("Choose size: S, M, L, XL, XXL, XXXL");
-            size = SizeEnum.valueOf(scanner.nextLine().toUpperCase()); // SizeEnum choice
+            talk("Choose color: RED, WHITE, BLACK, GREEN, BLUE");
+            color = colorsCheck(scanner); // ColorsEnum choice
 
-            println("Choose material: SILK, WOOL, COTTON, LINEN, SATIN");
-            material = MaterialEnum.valueOf(scanner.nextLine().toUpperCase()); // MaterialEnum choice
-
-            println("Choose color: RED, WHITE, BLACK, GREEN, BLUE");
-            color = ColorsEnum.valueOf(scanner.nextLine().toUpperCase()); // ColorsEnum choice
-
-            println("Order placed for " + itemOrdered + " with size " + size +
+            
+            
+            talk("Order placed for " + itemOrdered + " with size " + size +
                     ", material " + material + ", and color " + color);
             
             custonerOrder.setName(getName());
@@ -87,14 +94,14 @@ public class Customer extends Person{
             }
            
         } else if (status.equals("OLD")) {
-            println("You are an old customer. Would you like to modify your previous order?");
-            println("Enter Y/N");
+            talk("You are an old customer. Would you like to modify your previous order?");
+            talk("Enter Y/N");
              //logic here for confirmation
              // want to modify confirmation or No
             if (scanner.nextLine().toUpperCase().equals("Y")) {
                 modifyOrder();
             } else {
-                println("No changes made to your previous order.");
+                talk("No changes made to your previous order.");
             }
         }
     }
@@ -108,43 +115,44 @@ public class Customer extends Person{
     
     
     public void modifyOrder() {
-        println("Which part of your order would you like to modify?");
-        println("1. Size  2. Material  3. Color  4. Item Type (Coat, Pants, Both)");
+        talk("Which part of your order would you like to modify?");
+        talk("1. Size  2. Material  3. Color  4. Item Type (Coat, Pants, Both)");
         Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
 
         // input logic here for the customer’s choice
         int choice = scanner.nextInt(); // choice to change
 
         switch (choice) {
             case 1 -> {
-                println("Choose new size: S, M, L, XL, XXL, XXXL");
+                talk("Choose new size: S, M, L, XL, XXL, XXXL");
                 // Taking input for size
-                size = SizeEnum.valueOf(scanner.nextLine().toUpperCase()) ;  
-                println("Size updated to " + size);
-            }
+                size = sizeCheck(scanner2); ;  
+                talk("Size updated to " + size);
+            }/*
             case 2 -> {
-                println("Choose new material: SILK, WOOL, COTTON, LINEN, SATIN");
-                // Taking input for material here
-                material = MaterialEnum.valueOf(scanner.nextLine().toUpperCase());  
-                println("Material updated to " + material);
+                talk("Choose new material: SILK, WOOL, COTTON, LINEN, SATIN");
+                
+                material = materialCheck(scanner2);  
+                talk("Material updated to " + material);
             }
             case 3 -> {
-                println("Choose new color: RED, WHITE, BLACK, GREEN, BLUE");
+                talk("Choose new color: RED, WHITE, BLACK, GREEN, BLUE");
                 // Taking input for color here
-                color = ColorsEnum.valueOf(scanner.nextLine().toUpperCase());
-                println("Color updated to " + color);
+                color = colorsCheck(scanner2);
+                talk("Color updated to " + color);
             }
             case 4 -> {
-                println("Choose new item: Coat, Pants, or Both");
+                talk("Choose new item: Coat, Pants, or Both");
                 // Taking input for items 
-                itemOrdered = ItemEnum.valueOf(scanner.nextLine().toUpperCase());
-                println("Item updated to " + itemOrdered);
-            }
-            default -> println("Invalid choice.");
+                itemOrdered = clothesCheck(scanner2);
+                talk("Item updated to " + itemOrdered);
+            }*/
+            default -> talk("Invalid choice.");
         }
 
-        println("Updated order: " + itemOrdered + " with size " + size +
-                ", material " + material + ", and color " + color);
+        /*talk("Updated order: " + itemOrdered + " with size " + size +
+                ", material " + material + ", and color " + color);*/
     }
 
     public int calculatePrice() {
@@ -172,7 +180,7 @@ public class Customer extends Person{
 
     @Override
     public void showRole() {
-        println("I am a customer "+ getName()+".");
+        talk("I am a customer "+ getName()+".");
   
      }
     

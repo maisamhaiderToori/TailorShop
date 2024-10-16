@@ -43,10 +43,9 @@ public class TailorShop {
 
         
         welcomer.welcomeCustomer(newCustomer);
-
-        // Customer places order and calculates price
         newCustomer.placeOrder();
- 
+        // Customer places order and calculates price
+      
 
 //        // Management tasks (both Senior Tailor and Manager can now manage)
 //        senior.manageTailors();

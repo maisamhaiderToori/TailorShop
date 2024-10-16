@@ -22,4 +22,9 @@ abstract class Person {
     }
 
     public abstract void showRole();
+    
+    
+    public void talk(String text){
+        System.out.println( name +": "+ text);
+    }
 }
