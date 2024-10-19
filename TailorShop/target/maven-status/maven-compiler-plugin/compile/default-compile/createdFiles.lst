@@ -1,16 +1,12 @@
-com\junia\tailorshop\models\Size.class
 com\junia\tailorshop\TailorShop.class
 com\junia\tailorshop\people\Customer.class
 com\junia\tailorshop\people\Manager.class
 com\junia\tailorshop\people\Customer$1.class
-com\junia\tailorshop\models\Item.class
 com\junia\tailorshop\iooperations\FileOperations.class
-com\junia\tailorshop\models\Material.class
 com\junia\tailorshop\people\JuniorTailor.class
 com\junia\tailorshop\enums\SizeEnum.class
 com\junia\tailorshop\enums\ItemEnum.class
 com\junia\tailorshop\people\Person.class
-com\junia\tailorshop\models\Color.class
 com\junia\tailorshop\people\SeniorTailor.class
 com\junia\tailorshop\enums\MaterialEnum.class
 com\junia\tailorshop\interfaces\WelcomeService.class
