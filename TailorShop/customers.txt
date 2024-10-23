@@ -1,2 +1,0 @@
-{"contactInfo":"1234567890","itemOrdered":{"item":"COAT"},"size":{"size":"L"},"material":{"material":"SILK"},"color":{"color":"RED"}}
-{"contactInfo":"1234567890","itemOrdered":{"item":"COAT"},"size":{"size":"L"},"material":{"material":"WOOL"},"color":{"color":"WHITE"}}
