@@ -7,6 +7,7 @@ import com.junia.tailorshop.enums.SizeEnum;
 import com.junia.tailorshop.people.Customer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -200,5 +201,29 @@ public class Utils {
      */
     public static int currentTime() {
         return Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH")));
+    }
+    
+    
+        public static int changeChoice(Scanner scanner) {
+        boolean correct = false;
+        String num = "";
+        
+        while (!correct) {
+          
+              
+            num = scanner.nextLine();
+            if (num.equals("1")|| num.equals("2")|| 
+                num.equals("3")|| num.equals("4")|| 
+                num.equals("5")){
+                correct = true;
+            } else {
+                println("Please enter the number from (1, 2, 3, 4)");
+            }
+            
+            
+           
+        }
+        
+        return Integer.parseInt(num);
     }
 }

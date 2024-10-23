@@ -6,6 +6,7 @@ import com.junia.tailorshop.enums.ItemEnum;
 import com.junia.tailorshop.enums.MaterialEnum;
 import com.junia.tailorshop.enums.ColorsEnum;
 import com.junia.tailorshop.iooperations.FileOperations;
+import static com.junia.tailorshop.utils.Utils.changeChoice;
 import static com.junia.tailorshop.utils.Utils.clothesCheck;
 import static com.junia.tailorshop.utils.Utils.colorsCheck;
 import static com.junia.tailorshop.utils.Utils.materialCheck;
@@ -172,7 +173,7 @@ public class Customer extends Person {
         while (wantToChange) {
             talk("1. Size  2. Material  3. Color  4. Item Type (Coat, Pants, Both)");
             // Input logic here for the customer’s choice
-            int choice = scanner.nextInt(); // choice to change
+            int choice = changeChoice(scanner); // choice to change
             switch (choice) {
                 case 1 -> {
                     talk("Choose new size: S, M, L, XL, XXL, XXXL");
